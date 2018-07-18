@@ -21,7 +21,8 @@ class commonNav extends Component {
                   type: 'zhibo',
                   name: '直播',
                   toUrl: true,
-                  active: false
+                  active: false,
+                  url:'./zhibo'
                 },
                 {
                   channel: 900047,
@@ -100,15 +101,17 @@ class commonNav extends Component {
                   toUrl: false,
                   active: false
                 }
-              ]
+            ]
         }
     }
 
-    changeNav(type) {
-        console.log(1,type, this)
-        let newsList = this.refs.newsList
-        let lis = newsList.childNodes
-        console.log(newsList.getElementsByClassName('tuijian'))
+    changeNav(type,item) {
+        let  arr = this.state.navList.map((v) => {
+          v.active = false
+          return v
+        })
+        this.setState({navList:arr})
+        type.active = true
     }
 
 
@@ -121,7 +124,7 @@ class commonNav extends Component {
                         <div className="nav-new">
                             <ul ref="newsList">
                                 {this.state.navList.map((v,k) => {
-                                    return <li className={v.active ? "active": ""} onClick={this.changeNav.bind(this, v)} >{v.name}</li>
+                                    return <li  key={k} className={v.active ? "active": ""} onClick={this.changeNav.bind(this, v)} >{v.toUrl ? <Link to={v.url}>{v.name}</Link> : v.name}</li>
                                 })}
                             </ul>
                             <span className="line"></span>
