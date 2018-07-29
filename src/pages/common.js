@@ -3,8 +3,6 @@ import { Link } from 'react-router'
 import '../assets/css/common.css'
 
 class commonNav extends Component {
-
-
     constructor(props){
         super(props)
         this.state = {
