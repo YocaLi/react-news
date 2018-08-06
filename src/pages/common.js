@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import '../assets/css/common.css'
+import zhibo from './zhibo';
 
 class commonNav extends Component {
 
@@ -70,8 +71,9 @@ class commonNav extends Component {
                   channel: 901213,
                   type: 'shipin',
                   name: '视频',
-                  toUrl: false,
-                  active: false
+                  toUrl: true,
+                  active: false,
+                  url:'./shipin'
                 },
                 {
                   channel: 900054,
@@ -105,18 +107,26 @@ class commonNav extends Component {
         }
     }
 
-    changeNav(type,item) {
-        let  arr = this.state.navList.map((v) => {
-          v.active = false
+    componentWillMount(){
+      let pathname = this.props.location.pathname
+      if(pathname == '/shipin' || pathname == '/zhibo') this.changeNav(pathname)
+    }
+
+    changeNav(type) {
+      let  arr = this.state.navList.map((v) => {
+        if(v.type == type.replace('/','')){
+          v.active = true
           return v
-        })
-        this.setState({navList:arr})
-        type.active = true
+        }
+        v.active = false
+        return v
+      })
+      this.setState({navList:arr})
     }
 
 
     render() {
-        console.log(this.state)
+      console.log(React)
         return (
             <div className="react-body">
                 <div  className="lincoapp-tab3">
@@ -124,7 +134,7 @@ class commonNav extends Component {
                         <div className="nav-new">
                             <ul ref="newsList">
                                 {this.state.navList.map((v,k) => {
-                                    return <li  key={k} className={v.active ? "active": ""} onClick={this.changeNav.bind(this, v)} >{v.toUrl ? <Link to={v.url}>{v.name}</Link> : v.name}</li>
+                                    return <li  key={k} className={v.active ? "active": ""} onClick={this.changeNav.bind(this, v.type)} >{v.toUrl ? <Link to={v.url}>{v.name}</Link> : <Link to='/'>{v.name}</Link>}</li>
                                 })}
                             </ul>
                             <span className="line"></span>

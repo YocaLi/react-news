@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute } from 'react-router'
 import common from './pages/common'
 import index from './pages/index'
 import zhibo from './pages/zhibo'
+import shipin from './pages/shipin'
 
 
 class Routes extends Component {
@@ -15,7 +16,8 @@ class Routes extends Component {
             <Router history = {this.props.history} onUpdate = {this.updateHandle.bind(this)}>
                 <Route path="/" component = {common}>
                     <IndexRoute component = {index}></IndexRoute>
-                    <Route path="zhibo" component="zhibo"></Route>
+                    <Route path="/zhibo" component={zhibo}></Route>
+                    <Route path="/shipin" component={shipin}></Route>
                 </Route>
             </Router>
         )

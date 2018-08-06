@@ -35,7 +35,8 @@
   white-space: nowrap;
   font-size: 0.32rem;
 }
-.lincoapp-tab3 .tab-scroll-wrap ul li.active {
+.lincoapp-tab3 .tab-scroll-wrap ul li.active,
+.lincoapp-tab3 .tab-scroll-wrap ul li.active a {
   color: #f62929;
 }
 .lincoapp-tab3 .tab-scroll-wrap ul li a {
