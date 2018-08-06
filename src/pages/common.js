@@ -4,8 +4,6 @@ import '../assets/css/common.css'
 import zhibo from './zhibo';
 
 class commonNav extends Component {
-
-
     constructor(props){
         super(props)
         this.state = {
